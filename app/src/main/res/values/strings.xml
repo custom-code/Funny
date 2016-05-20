@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Funny</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_about">About</string>
+    <string name="action_nav_group_one">Group One</string>
+    <string name="action_nav_group_two">Group Two</string>
+    <string name="action_nav_group_three">Group Three</string>
+    <string name="action_nav_group_four">Group Four</string>
+    <string name="action_nav_item_one">Item One</string>
+    <string name="action_nav_item_two">Item Two</string>
+    <string name="lab_nav_item_title">Communicate</string>
+    <string name="text_main_head_user_name">Android Studio</string>
+    <string name="text_main_head_user_detail">android.studio@android.com</string>
+</resources>

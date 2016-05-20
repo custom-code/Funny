@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_group_one"
+            android:checked="true"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/action_nav_group_one"/>
+        <item
+            android:id="@+id/nav_group_two"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/action_nav_group_two"/>
+        <item
+            android:id="@+id/nav_group_three"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/action_nav_group_three"/>
+        <item
+            android:id="@+id/nav_group_four"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/action_nav_group_four"/>
+    </group>
+
+    <item android:title="@string/lab_nav_item_title">
+        <menu>
+            <item
+                android:id="@+id/nav_item_one"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/action_nav_item_one"/>
+            <item
+                android:id="@+id/nav_item_two"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/action_nav_item_two"/>
+        </menu>
+    </item>
+
+</menu>
