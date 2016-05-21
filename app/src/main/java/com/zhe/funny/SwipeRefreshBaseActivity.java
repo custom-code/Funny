@@ -35,8 +35,10 @@ public abstract class SwipeRefreshBaseActivity extends ToolbarActivity {
 
     void trySetupSwipeRefresh() {
         if (mSwipeRefreshLayout != null) {
-            mSwipeRefreshLayout.setColorSchemeResources(R.color.refresh_progress_3,
-                    R.color.refresh_progress_2, R.color.refresh_progress_1);
+            mSwipeRefreshLayout.setColorSchemeResources(
+                    R.color.refresh_progress_3,
+                    R.color.refresh_progress_2,
+                    R.color.refresh_progress_1);
             // do not use lambda!!
             mSwipeRefreshLayout.setOnRefreshListener(
                     new SwipeRefreshLayout.OnRefreshListener() {
