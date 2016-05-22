@@ -1,4 +1,4 @@
-package com.zhe.funny;
+package com.zhe.funny.base;
 
 import android.app.Application;
 

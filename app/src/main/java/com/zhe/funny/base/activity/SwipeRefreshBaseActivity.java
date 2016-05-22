@@ -1,10 +1,11 @@
-package com.zhe.funny;
+package com.zhe.funny.base.activity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.zhe.common.widget.MultiSwipeRefreshLayout;
+import com.zhe.funny.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

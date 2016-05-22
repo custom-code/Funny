@@ -5,23 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.zhe.funny.MainActivity">
+    tools:context=".main.activity.MainActivity"
+    tools:showIn="@layout/activity_main">
 
-    <include layout="@layout/view_app_bar_layout"/>
+    <include
+        layout="@layout/view_app_bar_layout"/>
 
-    <com.zhe.common.widget.MultiSwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <FrameLayout
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-        <!--<include layout="@layout/layout_main_content"/>-->
-
-        <FrameLayout
-            android:id="@+id/main_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </com.zhe.common.widget.MultiSwipeRefreshLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@id/bar_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_email"
+        app:layout_anchor="@id/bar_appbar_layout"
+        app:layout_anchorGravity="bottom|end"/>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,16 @@
+<com.zhe.common.widget.MultiSwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhe.funny.main.fragment.PageItemFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/page_item_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</com.zhe.common.widget.MultiSwipeRefreshLayout>
+
+

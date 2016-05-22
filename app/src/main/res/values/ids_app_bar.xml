@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="bar_appbar_layout" type="id"/>
+    <item name="bar_toolbar_layout" type="id"/>
+    <item name="bar_toolbar" type="id"/>
+    <item name="bar_tab_layout" type="id"/>
+    <item name="bar_fab" type="id"/>
+</resources>
