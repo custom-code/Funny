@@ -115,13 +115,13 @@ public class MainActivity extends SwipeRefreshBaseActivity
                 switchContent(mCurrentFragment, mItemFragment);
                 break;
             case R.id.nav_group_three:
-
+                resetToolbar(TOOLBAR_LAYOUT_MODE);
                 break;
             case R.id.nav_group_four:
-
+                resetToolbar(TOOLBAR_LAYOUT_WITH_TAB_MODE);
                 break;
             case R.id.nav_item_one:
-
+                resetToolbar(TOOLBAR_LAYOUT_WITH_FAB_MODE);
                 break;
             case R.id.nav_item_two:
 

@@ -80,9 +80,10 @@ public class PageItemMainFragment extends SwipeRefreshFragment {
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         LinearLayoutManager layoutManager1 = new
                 LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false);
-        mRecyclerView.setLayoutManager(layoutManager1);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
         mFragmentAdapter = new MainFragmentAdapter();
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mFragmentAdapter);
         View headView = LayoutInflater.from(mActivity).inflate(
                 R.layout.layout_main_frament_head, mRecyclerView, false);

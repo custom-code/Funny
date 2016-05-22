@@ -2,13 +2,11 @@ package com.zhe.funny.base.activity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -16,14 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import com.zhe.common.widget.MultiSwipeRefreshLayout;
 import com.zhe.core.BaseActivity;
 import com.zhe.funny.R;
 
 import java.lang.reflect.Field;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by zhe on 16/5/5.
@@ -38,6 +32,8 @@ public abstract class ToolbarActivity extends BaseActivity
     protected FloatingActionButton mActionButton;
 
     protected boolean mIsHidden = false;
+
+    private final int APPLAYOUT_HEIGHT = 450;
 
     public static final int ONLY_TOOLBAR_MODE = 0x001001;
     public static final int TOOLBAR_WITH_TAB_MODE = 0x001002;
@@ -66,9 +62,9 @@ public abstract class ToolbarActivity extends BaseActivity
         setSupportActionBar(mToolbar);
         setupToolbarByMode(setToolbarMode());
 
-//        if (Build.VERSION.SDK_INT >= 21) {
-//            mAppBar.setElevation(10.6f);
-//        }
+        if (Build.VERSION.SDK_INT >= 21) {
+            mAppBar.setElevation(10.6f);
+        }
     }
 
     private void setupToolbarByMode(int mode) {
@@ -90,6 +86,9 @@ public abstract class ToolbarActivity extends BaseActivity
             default:
                 resetOnlyToolbarMode();
         }
+        if (Build.VERSION.SDK_INT >= 21) {
+            mAppBar.setElevation(10.6f);
+        }
     }
 
     private void resetOnlyToolbarMode() {
@@ -102,10 +101,11 @@ public abstract class ToolbarActivity extends BaseActivity
         mParams.height = CoordinatorLayout.LayoutParams.WRAP_CONTENT;
         AppBarLayout.LayoutParams mParams1 =
                 (AppBarLayout.LayoutParams) mToolbarLayout.getLayoutParams();
-        mParams1.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP);
+        mParams1.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL |
+                AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED);
         CollapsingToolbarLayout.LayoutParams mParams2 =
                 (CollapsingToolbarLayout.LayoutParams) mToolbar.getLayoutParams();
-        mParams2.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_OFF);
+        mParams2.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PIN);
     }
 
     private void resetToolbarWithTabMode() {
@@ -113,23 +113,26 @@ public abstract class ToolbarActivity extends BaseActivity
             mActionButton.setVisibility(View.GONE);
         }
         mTabLayout.setVisibility(View.VISIBLE);
-
         CoordinatorLayout.LayoutParams mParams =
                 (CoordinatorLayout.LayoutParams) mAppBar.getLayoutParams();
         mParams.height = CoordinatorLayout.LayoutParams.WRAP_CONTENT;
         AppBarLayout.LayoutParams mParams1 =
                 (AppBarLayout.LayoutParams) mToolbarLayout.getLayoutParams();
-        mParams1.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
-
+        mParams1.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL |
+                AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
         CollapsingToolbarLayout.LayoutParams mParams2 =
                 (CollapsingToolbarLayout.LayoutParams) mToolbar.getLayoutParams();
-        mParams2.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_OFF);
+        mParams2.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PARALLAX);
     }
 
     private void resetToolbarLayoutMode() {
         if (mActionButton != null) {
             mActionButton.setVisibility(View.GONE);
         }
+        mTabLayout.setVisibility(View.GONE);
+        CoordinatorLayout.LayoutParams mParams =
+                (CoordinatorLayout.LayoutParams) mAppBar.getLayoutParams();
+        mParams.height = APPLAYOUT_HEIGHT;
         AppBarLayout.LayoutParams mParams1 =
                 (AppBarLayout.LayoutParams) mToolbarLayout.getLayoutParams();
         mParams1.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL |
@@ -144,17 +147,33 @@ public abstract class ToolbarActivity extends BaseActivity
             mActionButton.setVisibility(View.GONE);
         }
         mTabLayout.setVisibility(View.VISIBLE);
-
-        AppBarLayout.LayoutParams mParams1 =
-                (AppBarLayout.LayoutParams) mToolbarLayout.getLayoutParams();
-        mParams1.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
-    }
-
-    private void resetToolbarLayoutWithFabMode() {
+        CoordinatorLayout.LayoutParams mParams =
+                (CoordinatorLayout.LayoutParams) mAppBar.getLayoutParams();
+        mParams.height = APPLAYOUT_HEIGHT;
         AppBarLayout.LayoutParams mParams1 =
                 (AppBarLayout.LayoutParams) mToolbarLayout.getLayoutParams();
         mParams1.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL |
                 AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+        CollapsingToolbarLayout.LayoutParams mParams2 =
+                (CollapsingToolbarLayout.LayoutParams) mToolbar.getLayoutParams();
+        mParams2.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PARALLAX);
+    }
+
+    private void resetToolbarLayoutWithFabMode() {
+        if (mActionButton != null) {
+            mActionButton.setVisibility(View.VISIBLE);
+        }
+        mTabLayout.setVisibility(View.GONE);
+        CoordinatorLayout.LayoutParams mParams =
+                (CoordinatorLayout.LayoutParams) mAppBar.getLayoutParams();
+        mParams.height = APPLAYOUT_HEIGHT;
+        AppBarLayout.LayoutParams mParams1 =
+                (AppBarLayout.LayoutParams) mToolbarLayout.getLayoutParams();
+        mParams1.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL |
+                AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+        CollapsingToolbarLayout.LayoutParams mParams2 =
+                (CollapsingToolbarLayout.LayoutParams) mToolbar.getLayoutParams();
+        mParams2.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PARALLAX);
     }
 
     private int getStatusBarHeight() {
