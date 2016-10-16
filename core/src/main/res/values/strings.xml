@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Core</string>
+    <string name="loading">正在加载...</string>
+    <string name="try_again">重新加载</string>
+    <string name="not_data">暂无数据</string>
+    <string name="wrong">出错了</string>
 </resources>
