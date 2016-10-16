@@ -1,4 +1,4 @@
-package com.zhe.funny.base.adapter;
+package com.zhe.common.adapter;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zhe on 16/5/22.
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int TYPE_HEADER = 0;
     public static final int TYPE_NORMAL = 1;
-    private ArrayList<T> mDatas = new ArrayList<>();
+    private List<T> mDatas = new ArrayList<>();
     private View mHeaderView;
     private OnItemClickListener mListener;
 
@@ -31,7 +32,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         return mHeaderView;
     }
 
-    public void addDatas(ArrayList<T> datas) {
+    public void addDatas(List<T> datas) {
         mDatas.addAll(datas);
         notifyDataSetChanged();
     }

@@ -1,4 +1,4 @@
-package com.zhe.core;
+package com.zhe.core.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

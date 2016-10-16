@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import com.zhe.core.BaseActivity;
+import com.zhe.core.activity.BaseActivity;
 import com.zhe.funny.R;
 
 import java.lang.reflect.Field;

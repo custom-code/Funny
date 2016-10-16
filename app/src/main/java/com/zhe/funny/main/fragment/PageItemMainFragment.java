@@ -17,17 +17,22 @@ import android.view.ViewGroup;
 import com.zhe.funny.R;
 import com.zhe.funny.base.fragment.SwipeRefreshFragment;
 import com.zhe.funny.main.adapter.MainFragmentAdapter;
+import com.zhe.funny.main.mvp.MainPresenter;
+import com.zhe.funny.main.mvp.MainView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PageItemMainFragment extends SwipeRefreshFragment {
+public class PageItemMainFragment extends SwipeRefreshFragment implements MainView {
     private Activity mActivity;
     private Bundle mBundle;
+    private MainPresenter mPresenter;
 
     private RecyclerView mRecyclerView;
     private CardView mCardView;
     private MainFragmentAdapter mFragmentAdapter;
+
+    private int mPage = 1;
 
     public PageItemMainFragment() {
     }
@@ -41,6 +46,7 @@ public class PageItemMainFragment extends SwipeRefreshFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter = new MainPresenter(this);
         mActivity = getActivity();
         if (getArguments() != null) {
             mBundle = getArguments();
@@ -66,13 +72,14 @@ public class PageItemMainFragment extends SwipeRefreshFragment {
                 setRefreshing(true);
             }
         }, 358);
-        loadData(true);
+        mPresenter.onLoadData(mPage);
     }
 
     @Override
     public void requestDataRefresh() {
         super.requestDataRefresh();
-        loadData(false);
+        mPage = 1;
+        mPresenter.onLoadData(mPage);
     }
 
     private void setupRecyclerView() {
@@ -96,9 +103,19 @@ public class PageItemMainFragment extends SwipeRefreshFragment {
             for (int i = 0; i < 40; i++) {
                 list.add("position" + i);
             }
-            mFragmentAdapter.addDatas((ArrayList<String>) list);
+            mFragmentAdapter.addDatas(list);
         }
         setRefreshing(false);
     }
 
+    @Override
+    public void setListData(List<String> data) {
+        mFragmentAdapter.addDatas(data);
+        setRefreshing(false);
+    }
+
+    @Override
+    public void showToast(Bundle bundle) {
+
+    }
 }

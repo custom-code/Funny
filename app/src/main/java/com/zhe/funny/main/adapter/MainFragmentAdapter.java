@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zhe.funny.R;
-import com.zhe.funny.base.adapter.BaseRecyclerAdapter;
+import com.zhe.common.adapter.BaseRecyclerAdapter;
 
 /**
  * Created by zhe on 16/5/22.
