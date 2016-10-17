@@ -22,9 +22,9 @@ public abstract class BaseMVPActivity<T extends IPresenter> extends BaseActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentLayout());
+        ButterKnife.bind(this);
         mPresenter = getPresenter();
         mContext = this;
-        ButterKnife.bind(this);
         if (mPresenter != null)
             mPresenter.attachView(this);
     }

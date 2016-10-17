@@ -64,7 +64,9 @@ public class MainFragment extends SwipeRefreshFragment {
         mFragmentMainTab = (TabLayout) mActivity.findViewById(R.id.base_bar_tab_layout);
         mFragmentMainViewPager = (ViewPager) view.findViewById(R.id.fragment_main_viewpager);
         mFragmentMainViewPager.setAdapter(new MainFragmentViewPageAdapter(getChildFragmentManager()));
-        mFragmentMainTab.setupWithViewPager(mFragmentMainViewPager);
+        if (mFragmentMainTab != null) {
+            mFragmentMainTab.setupWithViewPager(mFragmentMainViewPager);
+        }
         return view;
     }
 
